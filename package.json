@@ -1,0 +1,33 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bddgen": "bddgen",
+    "start:mock": "node mock-app/server.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:ui": "npm run bddgen && npx playwright test --project=ui-bdd-chromium",
+    "test:ui:list": "npm run bddgen && npx playwright test --project=ui-bdd-chromium --list",
+    "test:ui:login-success": "npm run bddgen && npx playwright test --project=ui-bdd-chromium -g @smoke"
+  },
+  "keywords": [
+    "playwright",
+    "bdd",
+    "automation"
+  ],
+  "author": "Vidhya Rameshreddy",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "dotenv": "^17.4.2",
+    "playwright-bdd": "^8.5.0",
+    "prettier": "^3.8.3"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
