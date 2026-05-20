@@ -5,7 +5,7 @@ Feature: Verify login
   Background:
     Given the user is on the MaxSurvey login page
 
-  @login
+  @smoke
   Scenario: Successful login with valid "emailadreess"and "password"
     When the user enters username "swaroop.gowda@halliburton.com"
     And the user enters password "10r_Onsteroids19972715"
