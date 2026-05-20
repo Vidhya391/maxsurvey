@@ -1,6 +1,5 @@
 @login
 Feature: Verify login
-
   Verify user is able to login with valid and invalid credentials
 
   Background:
@@ -58,5 +57,5 @@ Feature: Verify login
     Then the user should be redirected to the dashboard
 
     Examples:
-      | username             | password  |
-      | admin@maxsurvey.com  | Admin@123 |
+      | username            | password  |
+      | admin@maxsurvey.com | Admin@123 |
