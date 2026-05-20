@@ -1,5 +1,5 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+import path from "path";
 
 const app = express();
 const port = Number(process.env.PORT || 3000);

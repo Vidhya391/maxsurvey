@@ -11,6 +11,7 @@
     "test:ui": "npm run bddgen && npx playwright test --project=ui-bdd-chromium",
     "test:ui:list": "npm run bddgen && npx playwright test --project=ui-bdd-chromium --list",
     "test:ui:login-success": "npm run bddgen && npx playwright test --project=ui-bdd-chromium -g @smoke",
+    "lint": "eslint . --ext .ts,.js,.tsx,.jsx",
     "prepare": "husky"
   },
   "keywords": [

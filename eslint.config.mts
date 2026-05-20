@@ -12,6 +12,7 @@ export default defineConfig([
       "playwright-report/**",
       "test-results/**",
       ".features-gen/**",
+      "package-lock.json",
     ],
   },
   {
