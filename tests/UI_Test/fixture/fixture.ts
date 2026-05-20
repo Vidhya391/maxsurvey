@@ -1,8 +1,9 @@
 import { test as base } from "playwright-bdd";
 import * as Pages from "../page/index";
-import type { Page } from "@playwright/test";
+import type { Browser, Page } from "@playwright/test";
 
 type Fixtures = {
+  chromiumBrowser: Browser;
   loginPage: Pages.LoginPage;
 };
 
@@ -18,8 +19,8 @@ export type TestFunction<TArgs extends unknown[] = []> = (
 export function createTestFunction<TArgs extends unknown[] = []>(
   handler: TestFunction<TArgs>,
 ): TestFunction<TArgs> {
-  return async ({ loginPage, page }, ...args) => {
-    await handler({ loginPage, page }, ...args);
+  return async ({ chromiumBrowser, loginPage, page }, ...args) => {
+    await handler({ chromiumBrowser, loginPage, page }, ...args);
   };
 }
 
@@ -36,6 +37,9 @@ export function createLoginTestFunction<TArgs extends unknown[] = []>(
 }
 
 export const test = base.extend<Fixtures>({
+  chromiumBrowser: async ({ browser }, use) => {
+    await use(browser);
+  },
   loginPage: async ({ page }, use) => {
     const loginPage = new Pages.LoginPage(page);
     await use(loginPage);
