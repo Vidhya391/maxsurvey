@@ -1,50 +1,52 @@
 {
-  "name": "playwright",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "bddgen": "bddgen",
-    "start:mock": "node mock-app/server.js",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "test:ui": "npm run bddgen && npx playwright test --project=ui-bdd-chromium",
-    "test:ui:list": "npm run bddgen && npx playwright test --project=ui-bdd-chromium --list",
-    "test:ui:login-success": "npm run bddgen && npx playwright test --project=ui-bdd-chromium -g @smoke",
-    "lint": "eslint . --ext .ts,.js,.tsx,.jsx",
-    "prepare": "husky"
-  },
-  "keywords": [
-    "playwright",
-    "bdd",
-    "automation"
-  ],
-  "author": "Vidhya Rameshreddy",
-  "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "@cucumber/gherkin": "^39.1.0",
-    "@cucumber/messages": "^32.3.1",
-    "@eslint/js": "^10.0.1",
-    "@eslint/json": "^1.2.0",
-    "@playwright/test": "^1.59.1",
-    "@types/node": "^25.6.0",
-    "@typescript-eslint/eslint-plugin": "^8.59.4",
-    "@typescript-eslint/parser": "^8.59.4",
-    "dotenv": "^17.4.2",
-    "eslint": "^10.4.0",
-    "eslint-plugin-playwright": "^2.10.3",
-    "gherkin-lint": "^4.2.4",
-    "globals": "^17.6.0",
-    "husky": "^9.1.7",
-    "jiti": "^2.7.0",
-    "lint-staged": "^17.0.5",
-    "playwright-bdd": "^8.5.1",
-    "prettier": "^3.8.3",
-    "prettier-plugin-gherkin": "^4.0.0",
-    "typescript-eslint": "^8.59.4"
-  },
-  "dependencies": {
-    "express": "^5.2.1"
-  }
+    "name": "playwright",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "bddgen": "bddgen",
+        "start:mock": "node mock-app/server.mjs",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "test:ui": "npm run bddgen && npx playwright test --project=ui-bdd-chromium",
+        "test:ui:list": "npm run bddgen && npx playwright test --project=ui-bdd-chromium --list",
+        "test:ui:login-success": "npm run bddgen && npx playwright test --project=ui-bdd-chromium -g @smoke",
+        "lint": "eslint . --ext .ts,.js,.tsx,.jsx",
+        "prepare": "husky"
+    },
+    "keywords": [
+        "playwright",
+        "bdd",
+        "automation"
+    ],
+    "author": "Vidhya Rameshreddy",
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "@cucumber/gherkin": "^39.1.0",
+        "@cucumber/messages": "^32.3.1",
+        "@eslint/js": "^10.0.1",
+        "@eslint/json": "^1.2.0",
+        "@playwright/test": "^1.60.0",
+        "@types/node": "^25.6.0",
+        "@typescript-eslint/eslint-plugin": "^8.59.4",
+        "@typescript-eslint/parser": "^8.59.4",
+        "allure-playwright": "^3.8.0",
+        "dotenv": "^17.4.2",
+        "eslint": "^10.4.0",
+        "eslint-plugin-playwright": "^2.10.3",
+        "gherkin-lint": "^0.0.15",
+        "globals": "^17.6.0",
+        "husky": "^9.1.7",
+        "jiti": "^2.7.0",
+        "lint-staged": "^17.0.5",
+        "playwright-bdd": "^8.5.1",
+        "prettier": "^3.8.3",
+        "prettier-plugin-gherkin": "^4.0.0",
+        "typescript-eslint": "^8.59.4"
+    },
+    "dependencies": {
+        "express": "^5.2.1",
+        "netlify-cli": "^26.0.2"
+    }
 }
