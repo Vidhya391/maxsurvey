@@ -42,4 +42,19 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: npx netlify deploy --dir=allure-report --prod --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN
+        run: |
+          set -e
+          echo "Starting Netlify deploy..."
+          DEPLOY_OUTPUT=$(npx netlify deploy --dir=allure-report --prod --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --json)
+          echo "$DEPLOY_OUTPUT"
+
+          DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | node -e "let d=''; process.stdin.on('data', c => d += c); process.stdin.on('end', () => { try { const j = JSON.parse(d); console.log(j.deploy_url || j.url || ''); } catch { console.log(''); } });")
+
+          if [ -n "$DEPLOY_URL" ]; then
+            echo "Netlify deploy URL: $DEPLOY_URL"
+            echo "NETLIFY_URL=$DEPLOY_URL" >> "$GITHUB_ENV"
+            {
+              echo "### Netlify Deploy"
+              echo "$DEPLOY_URL"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
