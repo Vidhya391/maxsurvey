@@ -40,6 +40,6 @@ jobs:
       - name: Deploy Allure report to Netlify
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && !cancelled() }}
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.nfp_dFCAi7w7Lhy4ZznnSP5mCPBpAiC4cEK49a60 }}
-          NETLIFY_SITE_ID: ${{ secrets.14907814-b901-49eb-ad05-d85b917ce941 }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: npx netlify deploy --dir=allure-report --prod --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN

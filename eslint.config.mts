@@ -11,6 +11,8 @@ export default defineConfig([
       "node_modules/**",
       "playwright-report/**",
       "test-results/**",
+      "allure-report/**",
+      "allure-results/**",
       ".features-gen/**",
       "package-lock.json",
     ],
