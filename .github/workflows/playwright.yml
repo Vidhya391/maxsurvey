@@ -4,6 +4,12 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+
+# Daily schedule main branch run (04:00 AM UTC)
+ schedule:
+  -cron: '0 4 * * *'
+
+
 jobs:
   test:
     timeout-minutes: 60
