@@ -1,9 +1,15 @@
 name: Playwright Tests
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, feature/branch-deploy-report]
   pull_request:
-    branches: [main, master]
+    branches: [main, master, feature/branch-deploy-report]
+  # Daily schedule main branch run (04:00 AM UTC)
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+
 jobs:
   test:
     timeout-minutes: 60
@@ -38,7 +44,7 @@ jobs:
           retention-days: 30
 
       - name: Deploy Allure report to Netlify
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && !cancelled() }}
+        if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/branch-deploy-report') && !cancelled() }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

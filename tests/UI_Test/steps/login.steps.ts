@@ -15,6 +15,8 @@ Given(
   createLoginTestFunction(async (loginPage) => {
     await loginPage.goto();
     await loginPage.verifyLoginPageLoaded();
+    console.log('This is report from branch')
+
   }),
 );
 
